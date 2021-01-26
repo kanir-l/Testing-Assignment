@@ -16,6 +16,6 @@ form.addEventListener("submit", event => {
 window.onload = (event) => {
   const errorString = window.location.search.substr(1);
   if(errorString == "e=wronglogin") {
-    document.querySelector("#errorMessage").innerHTML = "Fel användarnamn eller lösenord!";
+    document.querySelector("#errorMessage").innerHTML = "Fel anvÃ¤ndarnamn eller lÃ¶senord!";
   }
 }
