@@ -11,7 +11,7 @@ describe("Login form", () => {
     
     })
 
-    it("Fail to log in - wrong username", () => {
+    it("Fail to log in - wrong username, correct password", () => {
 
         cy.visit('/')
         cy.get('form')
@@ -22,7 +22,7 @@ describe("Login form", () => {
 
     })
 
-    it("Fail to log in - wrong password", () => {
+    it("Fail to log in - wrong password, correct username", () => {
 
         cy.visit('/') 
         cy.get('form') 
@@ -33,7 +33,7 @@ describe("Login form", () => {
 
     })
 
-    it("Fail to log in - empty username", () => {
+    it("Fail to log in - empty username, with correct password", () => {
 
         cy.visit('/')
         cy.get('form')
@@ -44,7 +44,7 @@ describe("Login form", () => {
 
     })
 
-    it("Fail to log in - empty password", () => {
+    it("Fail to log in - empty password, with correct username", () => {
 
         cy.visit('/')
         cy.get('form')
