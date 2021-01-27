@@ -20,4 +20,4 @@
 * Performed by Fredrik Andre
 
 # Localhost
-* "baseUrl": "http://localhost:5500/Frontend/"
+* "baseUrl": "http://localhost:5000"
