@@ -24,7 +24,7 @@ describe("Start redirectory", () => {
         
         cy.visit("/start.html")
         cy.get('a[href*="/"]').click()
-        cy.url().should("include", "/Frontend").end()
+        cy.url().should("include", "/").end()
 
     })
 
