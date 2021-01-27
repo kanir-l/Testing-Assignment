@@ -1,54 +1,58 @@
 describe("Login form", () => {
 
-    //Able to log in
-    it("Can Log in", () => {
+    it("Sucessfully log in", () => {
 
-        cy.visit('/') // Go to the url localhost
-
-        cy.get('form') // Get the tag <form>
-
-        cy.get('input[name="username"]').type("CoolUser").should('have.value', "CoolUser") // get the username name and check with the right username
-
-        cy.get('input[name="password"]').type("123123123").should('have.value', "123123123") // get the password name and check with the right password
-
-        cy.get('form').submit() // Submit the form to the next page
-
+        cy.visit('/') 
+        cy.get('form') 
+        cy.get('input[name="username"]').type("CoolUser").should('have.value', "CoolUser") 
+        cy.get('input[name="password"]').type("123123123").should('have.value', "123123123") 
+        cy.get('form').submit() 
         cy.url().should('include', 'start').end()
     
     })
 
-    //Unable to log in
-    it("Cannot Log in, with the right username, but wrong password", () => {
+    it("Fail to log in - wrong username", () => {
 
-        cy.visit('/') // Go to the url localhost
-
-        cy.get('form') // Get the tag <form>
-
-        cy.get('input[name="username"]').type("CoolUser") // get the username name and check with the right username
-
-        cy.get('input[name="password"]').type("abcabcabc") // get the password name and check with the wrong password
-
-        cy.get('form').submit() // Submit the form to the next page
-
+        cy.visit('/')
+        cy.get('form')
+        cy.get('input[name="username"]').type("WarmUser") 
+        cy.get('input[name="password"]').type("123123123") 
+        cy.get('form').submit()
         cy.contains("Fel").end()
 
     })
 
-    //Unable to log in
-    it("Cannot Log in, with the wrong username, but right password", () => {
+    it("Fail to log in - wrong password", () => {
 
-        cy.visit('/') // Go to the url localhost
-
-        cy.get('form') // Get the tag <form>
-
-        cy.get('input[name="username"]').type("WarmUser") // get the username name and check with the right username
-
-        cy.get('input[name="password"]').type("123123123") // get the password name and check with the wrong password
-
-        cy.get('form').submit() // Submit the form to the next page
-
+        cy.visit('/') 
+        cy.get('form') 
+        cy.get('input[name="username"]').type("CoolUser") 
+        cy.get('input[name="password"]').type("abcabcabc") 
+        cy.get('form').submit()
         cy.contains("Fel").end()
 
     })
-    
+
+    it("Fail to log in - empty username", () => {
+
+        cy.visit('/')
+        cy.get('form')
+        cy.get('input[name="username"]').type(" ") 
+        cy.get('input[name="password"]').type("123123123") 
+        cy.get('form').submit()
+        cy.contains("Fel").end()
+
+    })
+
+    it("Fail to log in - empty password", () => {
+
+        cy.visit('/')
+        cy.get('form')
+        cy.get('input[name="username"]').type("CoolUser") 
+        cy.get('input[name="password"]').type(" ") 
+        cy.get('form').submit()
+        cy.contains("Fel").end()
+
+    })
+
 })
