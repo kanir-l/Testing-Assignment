@@ -2,8 +2,14 @@ describe("Guestbook", () => {
 
     it("Guestbook Fill in Message", () => {
 
-        // Error too short message
+        // Blank textarea
         cy.visit("/guestbook.html") 
+        cy.get("form")
+        cy.get("textarea").invoke("val", "")
+        cy.get("form").submit()
+        cy.contains("kort")
+
+        // Too short message
         cy.get("form")
         cy.get("textarea").type("he")
         cy.get("form").submit()
